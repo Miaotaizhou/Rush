@@ -177,7 +177,7 @@ def main(stdscr):
     def not_game(state):
         # 画出GameOver 或 Win的界面
         game_field.draw(stdscr)
-        # 读取用户输入得到action,判断失宠其游戏还是结束游戏
+        # 读取用户输入得到action,判断是重启游戏还是结束游戏
         action = get_user_action(stdscr)
         responses = defaultdict(lambda :state) # 默认是当前状态，没有行为就会一直在当前界面循环
         responses['Restart'],responses['Exit'] = 'Init','Exit'# 对应不同行为转换到不同状态

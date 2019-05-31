@@ -20,6 +20,11 @@ class Clock(object):
         self._minute = minute
         self._second = second
 
+    @classmethod
+    def now(cls):
+        ctime = time.localtime(time.time())
+        return cls(ctime.tm_hour,ctime.tm_min,ctime.tm_sec)
+
     def run(self):
         """时钟行走"""
         self._second += 1

@@ -3,6 +3,12 @@
 __author__ = "Rush"
 
 import math
+import sys
+import os
+import time
+import pandas as pd
+import numpy as np
+import random
 
 
 '''
@@ -45,6 +51,37 @@ def perfect():
         if sum == num:
             print(num)
 
+
+'''
+设计产生验证码的函数,由大小写字母和数字构成
+'''
+def verify_code(code_len = 4):
+    strs = '0123456789QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm'
+    last_pos = len(strs)-1
+    code = ''
+    for _ in range(code_len):
+        index = random.randint(0,last_pos)
+        code += strs[index]
+        # print(code)
+    return code
+
+'''
+杨辉三角
+'''
+def triangle():
+    num = int(input('Number of rows: '))
+    yh = [[]]*num
+    for row in range(len(yh)):
+        yh[row] = [None]*(row+1)
+        for col in range(len(yh[row])):
+            if col == 0 or col == row:
+                yh[row][col] = 1
+            else:
+                yh[row][col] = yh[row-1][col]+ yh[row-1][col-1]
+            print(yh[row][col],end='\t')
+        print()
+
+
 if __name__ == '__main__':
     chicken()
     print('-'*50)
@@ -52,5 +89,7 @@ if __name__ == '__main__':
     print('-' * 50)
     perfect()
     print('-' * 50)
-
-
+    verify_code(10)
+    print('-'*50)
+    triangle()
+    print('-'*50)
